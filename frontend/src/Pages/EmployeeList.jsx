@@ -34,8 +34,8 @@ const EmployeeList = () => {
 
     if (loading) {
         return (
-            <div className={"text-center"}>
-                <Loading />
+            <div>
+                <Loading/>
             </div>
         )
     }
