@@ -33,8 +33,10 @@ public class EmployeeController {
     @PutMapping("/{id}")
     public ResponseEntity updateEmployee(@PathVariable Long id, @RequestBody Employee employee) {
         Employee currentEmployee = employeeRepository.findById(id).orElseThrow(RuntimeException::new);
-        currentEmployee.setName(employee.getName());
+        currentEmployee.setFirstName(employee.getFirstName());
+        currentEmployee.setLastName(employee.getLastName());
         currentEmployee.setEmail(employee.getEmail());
+        currentEmployee.setYearsInCompany(employee.getYearsInCompany());
         currentEmployee = employeeRepository.save(currentEmployee);
 
         return ResponseEntity.ok(currentEmployee);
