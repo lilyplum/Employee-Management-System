@@ -3,7 +3,8 @@ import React from 'react';
 const Error = () => {
     return (
         <div>
-            <h1>This is the Error Page</h1>
+            <h1>Error</h1>
+            <p>Oops Something went wrong !</p>
         </div>
     );
 };
