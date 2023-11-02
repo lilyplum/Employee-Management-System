@@ -30,7 +30,7 @@ const EmployeeList = () => {
             });
 
         return () => controller.abort();
-    }, []);
+    }, [data]);
 
     if (loading) {
         return (
