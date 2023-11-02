@@ -8,10 +8,26 @@ const fetchEmployees = (signal) => {
     }).then((res) => res.json());
 };
 
+const deleteEmployee = (id) => {
+    return fetch(`http://localhost:8080/employee/${id}`, {
+        method: "DELETE",
+    }).then((res) => console.log(res.status));
+};
+
 
 const EmployeeList = () => {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true)
+
+    const handleDelete = (id) => {
+        deleteEmployee(id).catch((err) => {
+            console.log(err);
+        });
+
+        setData((employees) => {
+            return employees.filter((employee) => employee.id !== id);
+        });
+    };
 
     useEffect(() => {
         const controller = new AbortController();
@@ -30,7 +46,7 @@ const EmployeeList = () => {
             });
 
         return () => controller.abort();
-    }, [data]);
+    }, []);
 
     if (loading) {
         return (
@@ -43,6 +59,7 @@ const EmployeeList = () => {
     return (
         <EmployeeTable
             employees={data}
+            onDelete={handleDelete}
         />
     );
 };

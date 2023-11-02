@@ -3,7 +3,7 @@ import Table from 'react-bootstrap/Table'
 import Button from "react-bootstrap/Button";
 
 
-const EmployeeTable = ({employees}) => {
+const EmployeeTable = ({employees, onDelete}) => {
     return (
         <div>
             <Table striped bordered hover variant="dark">
@@ -23,7 +23,8 @@ const EmployeeTable = ({employees}) => {
                         <td>{employee.name}</td>
                         <td>{employee.email}</td>
                         <td>
-                            <Button variant={"secondary"}>Update</Button>
+                            <Button type={"button"} variant={"secondary"}>Update</Button>
+                            <Button type={"button"} variant={"secondary"} onClick={() => onDelete(employee.id)}>Delete</Button>
                         </td>
                     </tr>
                 ))}
