@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 
 const Login = () => {
     return (
-        <Form>
+        <Form style={{width: "80%"}}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control type="email" placeholder="Enter email"/>
