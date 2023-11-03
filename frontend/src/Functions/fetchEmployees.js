@@ -1,5 +1,5 @@
-const fetchEmployees = (signal) => {
-    return fetch("http://localhost:8080/employees", {
+const fetchEmployees = (signal, page = 0) => {
+    return fetch(`http://localhost:8080/employees/${page}`, {
         signal,
     }).then((res) => res.json());
 };

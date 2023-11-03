@@ -4,6 +4,7 @@ import Loading from "../Components/Loading.jsx";
 import fetchEmployees from "../Functions/fetchEmployees.js";
 import deleteEmployee from "../Functions/deleteEmployee.js";
 import updateEmployee from "../Functions/updateEmployee.js";
+import CustomPagination from "../Components/Pagination.jsx";
 
 const EmployeeList = () => {
     const [data, setData] = useState(null);
@@ -39,7 +40,7 @@ const EmployeeList = () => {
 
         fetchEmployees(controller.signal)
             .then((employees) => {
-                setData(employees);
+                setData(employees.content);
                 setLoading(false);
                 console.log(employees);
             })
@@ -62,11 +63,17 @@ const EmployeeList = () => {
     }
 
     return (
-        <EmployeeTable
-            employees={data}
-            handleDelete={handleDelete}
-            handleUpdate={handleUpdate}
-        />
+        <>
+            <EmployeeTable
+                employees={data}
+                handleDelete={handleDelete}
+                handleUpdate={handleUpdate}
+            />
+            <CustomPagination
+                data={data}
+                setData={setData}
+            />
+        </>
     );
 };
 
