@@ -22,6 +22,8 @@ public class Employee {
 
     private int yearsInCompany;
 
+    private int managerId;
+
     public long getId() {
         return id;
     }
@@ -60,5 +62,13 @@ public class Employee {
 
     public void setYearsInCompany(int yearsInCompany) {
         this.yearsInCompany = yearsInCompany;
+    }
+
+    public int getManagerId() {
+        return managerId;
+    }
+
+    public void setManagerId(int managerId) {
+        this.managerId = managerId;
     }
 }
