@@ -1,6 +1,8 @@
 import React from 'react';
 import Table from 'react-bootstrap/Table'
 import Button from "react-bootstrap/Button";
+import {useNavigate} from "react-router-dom";
+import UpdateEmployeeModal from "./UpdateEmployeeModal.jsx";
 
 
 const EmployeeTable = ({employees, onDelete}) => {
@@ -27,8 +29,8 @@ const EmployeeTable = ({employees, onDelete}) => {
                         <td>{employee.yearsInCompany}</td>
                         <td>{employee.email}</td>
                         <td>
-                            <Button type={"button"} variant={"secondary"}>Update</Button>
-                            <Button type={"button"} variant={"secondary"} onClick={() => onDelete(employee.id)}>Delete</Button>
+                            <UpdateEmployeeModal />
+                            <Button type={"button"} variant={"danger"} onClick={() => onDelete(employee.id)}>Delete</Button>
                         </td>
                     </tr>
                 ))}
