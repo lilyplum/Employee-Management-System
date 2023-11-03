@@ -1,19 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import EmployeeTable from "../Components/EmployeeTable.jsx";
 import Loading from "../Components/Loading.jsx";
-
-const fetchEmployees = (signal) => {
-    return fetch("http://localhost:8080/employees", {
-        signal,
-    }).then((res) => res.json());
-};
-
-const deleteEmployee = (id) => {
-    return fetch(`http://localhost:8080/employees/${id}`, {
-        method: "DELETE",
-    }).then((res) => console.log(res.status));
-};
-
+import fetchEmployees from "../Functions/fetchEmployees.js";
+import deleteEmployee from "../Functions/deleteEmployee.js";
 
 const EmployeeList = () => {
     const [data, setData] = useState(null);
@@ -59,7 +48,7 @@ const EmployeeList = () => {
     return (
         <EmployeeTable
             employees={data}
-            onDelete={handleDelete}
+            handleDelete={handleDelete}
         />
     );
 };
