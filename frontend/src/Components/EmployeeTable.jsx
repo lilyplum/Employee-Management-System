@@ -4,15 +4,15 @@ import UpdateEmployeeModal from "./UpdateEmployeeModal.jsx";
 import DeleteEmployeeModal from "./DeleteEmployeeModal.jsx";
 
 
-const EmployeeTable = ({employees, handleDelete}) => {
+const EmployeeTable = ({employees, handleDelete, handleUpdate}) => {
     return (
         <div>
             <Table striped bordered hover variant="dark">
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Firstname</th>
-                    <th>Lastname</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
                     <th>Year in Company</th>
                     <th>Email</th>
                     <th></th>
@@ -28,7 +28,7 @@ const EmployeeTable = ({employees, handleDelete}) => {
                         <td>{employee.yearsInCompany}</td>
                         <td>{employee.email}</td>
                         <td>
-                            <UpdateEmployeeModal employee={employee}/>
+                            <UpdateEmployeeModal employee={employee} handleUpdate={handleUpdate}/>
                             <DeleteEmployeeModal employee={employee} handleDelete={handleDelete}/>
                         </td>
                     </tr>
