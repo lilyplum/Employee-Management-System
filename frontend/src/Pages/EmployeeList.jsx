@@ -3,13 +3,14 @@ import EmployeeTable from "../Components/EmployeeTable.jsx";
 import Loading from "../Components/Loading.jsx";
 import fetchEmployees from "../Functions/fetchEmployees.js";
 import deleteEmployee from "../Functions/deleteEmployee.js";
+import updateEmployee from "../Functions/updateEmployee.js";
 
 const EmployeeList = () => {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true)
 
-    const handleDelete = (id) => {
-        deleteEmployee(id).catch((err) => {
+    const handleDelete = (employeeId) => {
+        deleteEmployee(employeeId).catch((err) => {
             console.log(err);
         });
 
@@ -17,6 +18,21 @@ const EmployeeList = () => {
             return employees.filter((employee) => employee.id !== id);
         });
     };
+
+    const handleUpdate = (currentEmployee) => {
+        updateEmployee(currentEmployee).catch((err) => {
+            console.log(err);
+        });
+
+        setData((employees) => {
+            return employees.map(employee => {
+                if (employee.id === currentEmployee.id) {
+                    return currentEmployee;
+                }
+                return employee;
+            });
+        });
+    }
 
     useEffect(() => {
         const controller = new AbortController();
@@ -49,6 +65,7 @@ const EmployeeList = () => {
         <EmployeeTable
             employees={data}
             handleDelete={handleDelete}
+            handleUpdate={handleUpdate}
         />
     );
 };

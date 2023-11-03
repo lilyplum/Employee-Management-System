@@ -1,5 +1,5 @@
-const deleteEmployee = (id) => {
-    return fetch(`http://localhost:8080/employees/${id}`, {
+const deleteEmployee = (employeeId) => {
+    return fetch(`http://localhost:8080/employees/${employeeId}`, {
         method: "DELETE",
     }).then((res) => console.log(res.status));
 };
