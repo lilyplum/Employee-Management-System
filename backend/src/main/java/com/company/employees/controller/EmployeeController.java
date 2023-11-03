@@ -2,6 +2,10 @@ package com.company.employees.controller;
 
 import com.company.employees.data.Employee;
 import com.company.employees.repository.EmployeeRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,9 +23,9 @@ public class EmployeeController {
         this.employeeRepository = employeeRepository;
     }
 
-    @GetMapping
-    public List<Employee> getEmployees() {
-        return employeeRepository.findAll();
+    @GetMapping("/{page}")
+    public Page<Employee> getEmployees(@PathVariable int page ) {
+        return employeeRepository.findAll(PageRequest.of(page,10, Sort.by("id")));
     }
 
 
