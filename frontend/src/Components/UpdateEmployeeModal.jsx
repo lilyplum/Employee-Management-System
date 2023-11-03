@@ -3,9 +3,8 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 
-const UpdateEmployeeModal = () => {
+const UpdateEmployeeModal = ({employee}) => {
     const [show, setShow] = useState(false);
-
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
@@ -17,7 +16,7 @@ const UpdateEmployeeModal = () => {
 
             <Modal centered size={"lg"} show={show} onHide={handleClose}>
 
-                <Modal.Header closeButton>
+                <Modal.Header>
                     <Modal.Title>Editing</Modal.Title>
                 </Modal.Header>
 
@@ -27,7 +26,7 @@ const UpdateEmployeeModal = () => {
                             <Form.Label>First Name</Form.Label>
                             <Form.Control
                                 type="text"
-                                placeholder="Max"
+                                defaultValue={employee.firstName}
                                 autoFocus
                             />
                         </Form.Group>
@@ -35,7 +34,7 @@ const UpdateEmployeeModal = () => {
                             <Form.Label>Last Name</Form.Label>
                             <Form.Control
                                 type="text"
-                                placeholder="Muster"
+                                defaultValue={employee.lastName}
                                 autoFocus
                             />
                         </Form.Group>
@@ -43,7 +42,7 @@ const UpdateEmployeeModal = () => {
                             <Form.Label>Email address</Form.Label>
                             <Form.Control
                                 type="email"
-                                placeholder="name@example.com"
+                                defaultValue={employee.email}
                                 autoFocus
                             />
                         </Form.Group>
