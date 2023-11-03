@@ -15,7 +15,7 @@ const EmployeeList = () => {
         });
 
         setData((employees) => {
-            return employees.filter((employee) => employee.id !== id);
+            return employees.filter((employee) => employee.id !== employeeId);
         });
     };
 
