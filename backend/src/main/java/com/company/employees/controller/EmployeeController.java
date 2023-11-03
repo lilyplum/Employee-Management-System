@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping("employee")
+@RequestMapping("employees")
 public class EmployeeController {
 
     private final EmployeeRepository employeeRepository;
