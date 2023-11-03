@@ -1,11 +1,10 @@
 import React from 'react';
 import Table from 'react-bootstrap/Table'
-import Button from "react-bootstrap/Button";
-import {useNavigate} from "react-router-dom";
 import UpdateEmployeeModal from "./UpdateEmployeeModal.jsx";
+import DeleteEmployeeModal from "./DeleteEmployeeModal.jsx";
 
 
-const EmployeeTable = ({employees, onDelete}) => {
+const EmployeeTable = ({employees, handleDelete}) => {
     return (
         <div>
             <Table striped bordered hover variant="dark">
@@ -29,8 +28,8 @@ const EmployeeTable = ({employees, onDelete}) => {
                         <td>{employee.yearsInCompany}</td>
                         <td>{employee.email}</td>
                         <td>
-                            <UpdateEmployeeModal />
-                            <Button type={"button"} variant={"danger"} onClick={() => onDelete(employee.id)}>Delete</Button>
+                            <UpdateEmployeeModal employee={employee}/>
+                            <DeleteEmployeeModal employee={employee} handleDelete={handleDelete}/>
                         </td>
                     </tr>
                 ))}
