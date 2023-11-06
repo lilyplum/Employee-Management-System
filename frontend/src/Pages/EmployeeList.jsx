@@ -35,14 +35,12 @@ const EmployeeList = () => {
         });
     }
 
-    useEffect(() => {
-        const controller = new AbortController();
-
-        fetchEmployees(controller.signal)
+    const fetchEmployeeList = (controller, page = 0) => {
+        fetchEmployees(controller.signal, page)
             .then((employees) => {
                 setData(employees);
                 setLoading(false);
-                // console.log(employees);
+                console.log(employees);
             })
             .catch((error) => {
                 if (error.name !== "AbortError") {
@@ -50,6 +48,12 @@ const EmployeeList = () => {
                     throw error;
                 }
             });
+    }
+
+    useEffect(() => {
+        const controller = new AbortController();
+
+        fetchEmployeeList(controller);
 
         return () => controller.abort();
     }, []);
@@ -71,7 +75,7 @@ const EmployeeList = () => {
             />
             <CustomPagination
                 data={data}
-                setData={setData}
+                fetchEmployeeList={fetchEmployeeList}
             />
         </>
     );
