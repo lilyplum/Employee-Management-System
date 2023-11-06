@@ -40,9 +40,9 @@ const EmployeeList = () => {
 
         fetchEmployees(controller.signal)
             .then((employees) => {
-                setData(employees.content);
+                setData(employees);
                 setLoading(false);
-                console.log(employees);
+                // console.log(employees);
             })
             .catch((error) => {
                 if (error.name !== "AbortError") {

@@ -20,7 +20,7 @@ const EmployeeTable = ({employees, handleDelete, handleUpdate}) => {
                 </thead>
 
                 <tbody>
-                {employees.map((employee, index) => (
+                {employees.content.map((employee, index) => (
                     <tr key={employee.id}>
                         <td>{employee.id}</td>
                         <td>{employee.firstName}</td>
