@@ -4,7 +4,7 @@ import Loading from "../Components/Loading.jsx";
 import fetchEmployees from "../Functions/fetchEmployees.js";
 import deleteEmployee from "../Functions/deleteEmployee.js";
 import updateEmployee from "../Functions/updateEmployee.js";
-import CustomPagination from "../Components/Pagination.jsx";
+import Pagination from "../Components/Pagination.jsx";
 
 const EmployeeList = () => {
     const [data, setData] = useState(null);
@@ -73,7 +73,7 @@ const EmployeeList = () => {
                 handleDelete={handleDelete}
                 handleUpdate={handleUpdate}
             />
-            <CustomPagination
+            <Pagination
                 data={data}
                 fetchEmployeeList={fetchEmployeeList}
             />

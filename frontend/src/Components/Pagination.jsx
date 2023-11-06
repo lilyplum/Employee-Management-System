@@ -1,10 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import Loading from "./Loading.jsx";
 import ResponsivePagination from 'react-responsive-pagination';
 
 
-
-const CustomPagination = ({fetchEmployeeList, data}) => {
+const Pagination = ({fetchEmployeeList, data}) => {
     const [currentPage, setCurrentPage] = useState(data.number + 1);
     const totalPages = data.totalPages;
 
@@ -27,4 +25,4 @@ const CustomPagination = ({fetchEmployeeList, data}) => {
     );
 };
 
-export default CustomPagination;
+export default Pagination;
